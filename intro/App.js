@@ -9,7 +9,7 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-      <Text>Contador:{contador}</Text>
+      <Text>Contador: {contador}</Text>
       <Button title='Agregar' onPress={()=>setContador(contador+1)}> </Button>
       <Button title='Quitar' onPress={()=>setContador(contador-1)}> </Button>
       <Button title='Reiniciar' onPress={()=>setContador(0)}> </Button>
@@ -23,8 +23,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#caf312ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  texto:{},
 });
