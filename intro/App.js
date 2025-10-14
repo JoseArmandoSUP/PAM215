@@ -9,10 +9,15 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-      <Text>Contador: {contador}</Text>
-      <Button title='Agregar' onPress={()=>setContador(contador+1)}> </Button>
-      <Button title='Quitar' onPress={()=>setContador(contador-1)}> </Button>
-      <Button title='Reiniciar' onPress={()=>setContador(0)}> </Button>
+      <Text style={styles.texto}>Contador:</Text>
+      <Text style={styles.texto2}>{contador}</Text>
+
+      <View style={styles.contenedorBotones}>
+        <Button title='Agregar' onPress={()=>setContador(contador+1)}> </Button>
+        <Button title='Quitar' onPress={()=>setContador(contador-1)}> </Button>
+        <Button title='Reiniciar' onPress={()=>setContador(0)}> </Button>
+      </View>
+      
       <StatusBar style="auto" />
     </View>
 
@@ -28,5 +33,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  texto:{},
+  texto:{
+    fontFamily:"Times New Roman",
+    fontSize:30,
+    color: '#f31212ff',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    textDecorationLine: 'line-through',
+  },
+
+  texto2:{
+    fontFamily:"Courier",
+    fontSize:40,
+    color: '#bf12f3ff',
+    fontWeight: '700',
+    textDecorationLine: 'underline',
+  },
+
+  contenedorBotones:{
+    marginTop:20,
+    flexDirection: "row",
+    gap: 20, 
+  },
 });
