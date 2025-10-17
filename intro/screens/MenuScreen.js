@@ -37,7 +37,7 @@ export default function MenuScreen() {
         case 'menu':
             default:
                 return (
-                    <View>
+                    <View style={styles.botones}>
                         <Text>Menu de Practicas</Text>
                         <Button onPress={()=>setScreen('contador')} title='Pract: Contador'></Button>
                         <Button onPress={()=>setScreen('botones')} title='Pract: Buttons'></Button>
@@ -54,4 +54,12 @@ export default function MenuScreen() {
   
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    botones:{
+        marginTop:20,
+        flexDirection:'column',
+        gap: 20,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+})
