@@ -39,7 +39,6 @@ export default function BotonesScreens() {
             color='#810707ff'
           ></Button>
         </View>
-
       </View>
     )
 
