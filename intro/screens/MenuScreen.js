@@ -2,7 +2,7 @@ import { Text, StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
 import ContadorScreen from './ContadorScreens';
 import BotonesScreen from './BotonesScreens';
-import TextInput from './TextInput';
+import TextInputAle from './TextInputAlert';
 import ImageBackground from './ImageBackground';
 import ScrollView from './ScrollView';
 import ActivityIndicator from './ActivityIndicator';
@@ -21,7 +21,7 @@ export default function MenuScreen() {
         case 'botones':
             return<BotonesScreen/>
         case 'textInput':
-            return<TextInput/>
+            return<TextInputAle/>
         case 'imageBackground':
             return<ImageBackground/>
         case 'scrollView':
