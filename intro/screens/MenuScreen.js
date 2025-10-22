@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import ContadorScreen from './ContadorScreens';
 import BotonesScreen from './BotonesScreens';
 import TextInputAle from './TextInputAlert';
-import ImageBackground from './ImageBackground';
+import ImageBackgrou from './ImageBack';
 import ScrollView from './ScrollView';
 import ActivityIndicator from './ActivityIndicator';
 import FlatList from './FlatList';
@@ -23,7 +23,7 @@ export default function MenuScreen() {
         case 'textInput':
             return<TextInputAle/>
         case 'imageBackground':
-            return<ImageBackground/>
+            return<ImageBackgrou/>
         case 'scrollView':
             return<ScrollView/>
         case 'activityIndicator':
