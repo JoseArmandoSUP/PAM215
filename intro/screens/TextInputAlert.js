@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, Button, TextInput, Alert} from 'react-native';
+import { Text, StyleSheet, View, Button, TextInput, Alert, Platform} from 'react-native';
 import React, {useState} from 'react';
 
 export default function TextInputAlert() {
@@ -20,20 +20,36 @@ export default function TextInputAlert() {
         <Text style={styles.titulo}>TextInput & Alert</Text>
         
         <Text style={styles.etiquetas}>Nombre: </Text>
-        <TextInput style={styles.inputs} placeholder='Escirbe tu nombre aquí' value={nombre} onChangeText={setNombre}>
+        <TextInput 
+          style={styles.inputs} 
+          placeholder='Escirbe tu nombre aquí' 
+          value={nombre} 
+          onChangeText={setNombre}
+        />
           
-        </TextInput>
+        
         <Text style={styles.etiquetas}>Contraseña: </Text>
-        <TextInput style={styles.inputs} placeholder='Escirbe tu nombre aquí' keyboardType='phone-pad' value={password} onChangeText={setPassword} 
-        secureTextEntry={true}>
+        <TextInput 
+          style={styles.inputs} 
+          placeholder='Escirbe tu contraseña aquí' 
+          keyboardType='phone-pad' 
+          value={password} 
+          onChangeText={setPassword} 
+          secureTextEntry={true}
+        />
           
-        </TextInput>
+        
         <Text style={styles.etiquetas}>Telefono: </Text>
-        <TextInput style={styles.inputs} placeholder='Escirbe tu nombre aquí' value={telefono} onChangeText={setTelefono}>
+        <TextInput 
+          style={styles.inputs} 
+          placeholder='Escirbe tu telefono aquí' 
+          value={telefono} 
+          onChangeText={setTelefono}
+        />
           
-        </TextInput>
+        
 
-        <Button title='Mostrar Alerta' onPress={mostrarAlerta}></Button>
+        <Button title='Mostrar Alerta' onPress={mostrarAlerta}/>
 
       </View>
     )
