@@ -4,7 +4,7 @@ import ContadorScreen from './ContadorScreens';
 import BotonesScreen from './BotonesScreens';
 import TextInputAle from './TextInputAlert';
 import ImageBackgrou from './ImageBack';
-import ScrollView from './ScrollView';
+import Scrollview from './Scrollview';
 import ActivityIndicator from './ActivityIndicator';
 import FlatList from './FlatList';
 import Modal from './Modal';
@@ -25,7 +25,7 @@ export default function MenuScreen() {
         case 'imageBackground':
             return<ImageBackgrou/>
         case 'scrollView':
-            return<ScrollView/>
+            return<Scrollview/>
         case 'activityIndicator':
             return<ActivityIndicator/>
         case 'flatList':
