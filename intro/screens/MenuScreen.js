@@ -9,6 +9,7 @@ import ActivityIndicator from './ActivityIndicator';
 import FlatList from './FlatList';
 import Modal from './Modal';
 import ButtomSheet from './ButtomSheet';
+import Repaso1 from './Repaso1';
 import { Button } from 'react-native-web';
 
 export default function MenuScreen() {
@@ -34,6 +35,8 @@ export default function MenuScreen() {
             return<Modal/>
         case 'buttomSheet':
             return<ButtomSheet/>
+        case 'repaso1':
+            return<Repaso1/>
         case 'menu':
             default:
                 return (
@@ -48,6 +51,7 @@ export default function MenuScreen() {
                         <Button onPress={()=>setScreen('flatList')} title='Pract: FlatList y Section List'></Button>
                         <Button onPress={()=>setScreen('modal')} title='Pract: Modal'></Button>
                         <Button onPress={()=>setScreen('buttomSheet')} title='Pract: Bottom Sheet'></Button>
+                        <Button onPress={()=>setScreen('repaso1')} title='Repaso 1'></Button>
                     </View>
                 )
     }
