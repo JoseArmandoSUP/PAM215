@@ -5,8 +5,8 @@ import BotonesScreen from './BotonesScreens';
 import TextInputAle from './TextInputAlert';
 import ImageBackgrou from './ImageBack';
 import Scrollview from './Scrollview';
-import ActivityIndicator from './ActivityIndicator';
-import FlatList from './FlatList';
+import ActivityIndica from './ActivityIndi';
+import FlatList from './FlatYsection';
 import Modal from './Modal';
 import ButtomSheet from './ButtomSheet';
 import Repaso1 from './Repaso1';
@@ -28,7 +28,7 @@ export default function MenuScreen() {
         case 'scrollView':
             return<Scrollview/>
         case 'activityIndicator':
-            return<ActivityIndicator/>
+            return<ActivityIndica/>
         case 'flatList':
             return<FlatList/>
         case 'modal':
