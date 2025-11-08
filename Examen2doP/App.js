@@ -122,13 +122,29 @@ export default function App() {
 
             <Text style={styles.datosCategoria}>Tarea 2: Pintar la sala</Text>
             <Text style={styles.datosCategoria}>Prioridad: Media</Text>
-            
+            <Text style={[styles.statusEstilo, {color: status4 ? color: 'black'}]}>
+              {status4 ? 'Completada' : 'Pendiente'}
+            </Text>
+            <Switch
+              value = {status4}
+              onValueChange={()=>setStatus4(!status4)}
+              trackColor={{true : 'green', false: 'rojo'}}
+            ></Switch>
           </View>
 
           <View style={styles.categoria3}>
             <Text style={styles.tCategoria}>Personal</Text>
             <Text style={styles.datosCategoria}>Tarea 1: Practica la guitarra</Text>
             <Text style={styles.datosCategoria}>Prioridad: Baja</Text>
+            <Text style={[styles.statusEstilo, {color: status5 ? color: 'black'}]}>
+              {status5 ? 'Completada' : 'Pendiente'}
+            </Text>
+            <Switch
+              value = {status5}
+              onValueChange={()=>setStatus2(!status5)}
+              trackColor={{true : 'green', false: 'rojo'}}
+            ></Switch>
+
             <Text style={styles.datosCategoria}>Tarea 2: Seguir con el curso de dibujo</Text>
             <Text style={styles.datosCategoria}>Prioridad: </Text>
             {/*estatus*/}
