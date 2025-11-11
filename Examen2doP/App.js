@@ -141,14 +141,20 @@ export default function App() {
             </Text>
             <Switch
               value = {status5}
-              onValueChange={()=>setStatus2(!status5)}
+              onValueChange={()=>setStatus5(!status5)}
               trackColor={{true : 'green', false: 'rojo'}}
             ></Switch>
 
             <Text style={styles.datosCategoria}>Tarea 2: Seguir con el curso de dibujo</Text>
             <Text style={styles.datosCategoria}>Prioridad: </Text>
-            {/*estatus*/}
-            {/*switch estatus*/}
+            <Text style={[styles.statusEstilo, {color: status6 ? color: 'black'}]}>
+              {status6 ? 'Completada' : 'Pendiente'}
+            </Text>
+            <Switch
+              value = {status6}
+              onValueChange={()=>setStatus2(!status6)}
+              trackColor={{true : 'green', false: 'rojo'}}
+            ></Switch>
           </View>
 
         </View>
