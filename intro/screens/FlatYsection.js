@@ -37,14 +37,140 @@ export default function FlatYsection() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.titulo}>Ejemplo de FlatList</Text>
+        <Text style={styles.Titulo}>Ejemplo de FlatList</Text>
         <FlatList
-        
+          data={datos}
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) => (
+            <View style={styles.elementos}>
+              <Text style={styles.text}>{item.nombre}</Text>
+            </View>
+          )}
+          scrollEnabled={false}
+          ItemSeparatorComponent={() => <View style={styles.separador}></View> }
         ></FlatList>
+
+          <Text style={styles.Titulo2}>Ejemplo de FlatList</Text>
+
+          <SectionList
+            sections={secciones}
+            keyExtractor={(item, index) => item.nombre + index}
+            renderItem={({item}) => (
+              <View style={styles.intemSection}>
+                <Text style={styles.textItem}>{item.nombre}</Text>
+              </View>
+            )}
+
+            renderSectionHeader={({section:{titulo}}) => (
+              <View style={styles.encabezado}>
+                <Text style={styles.tituloSeccion}>{titulo}</Text>
+              </View>
+            )}
+
+            scrollEnabled={false}
+            stickySectionHeadersEnabled={false}
+
+          ></SectionList>
       </View>
     </ScrollView>
   )
   
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    backgroundColor: '#72b461ff',
+  },
+
+  content:{
+    padding: 20,
+    paddingBottom: 40,
+  },
+
+  Titulo:{
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    marginTop: 20,
+    textAlign: 'center',
+    color:'#2b87e2ff',
+  },
+
+  Titulo2:{
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    marginTop: 30,
+    textAlign: 'center',
+    color:'#2b87e2ff',
+  },
+
+  elementos:{
+    width:'100%',
+    height: 80,
+    backgroundColor: '#e12847ff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 5,
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+
+  text:{
+    fontSize: 20,
+    fontFamily: 'Times New Roman',
+    color: '#fff',
+    fontWeight: '900',
+    textDecorationLine: 'underline',
+  },
+
+  separador:{
+    height: 10,
+  },
+
+  encabezado:{
+    backgroundColor: '#88c4d3ff',
+    padding: 15,
+    borderRadius: 12,
+    marginTop: 10,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset:{ width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+
+  tituloSeccion:{
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'center',
+    fontFamily: 'Times New Roman',
+  },
+
+  intemSection:{
+    backgroundColor: '#ffd700',
+    padding: 15,
+    marginVertical: 5,
+    borderRadius: 5,
+    marginLeft: 10, 
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 3,
+  }, 
+
+  textItem:{
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#000',
+    fontFamily: 'Times New Roman',
+  },
+})
