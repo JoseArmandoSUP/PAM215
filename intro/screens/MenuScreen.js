@@ -7,7 +7,7 @@ import ImageBackgrou from './ImageBack';
 import Scrollview from './Scrollview';
 import ActivityIndica from './ActivityIndi';
 import FlatList from './FlatYsection';
-import Modal from './Modal';
+import Modal from './ModalScreen';
 import ButtomSheet from './ButtomSheet';
 import Repaso1 from './Repaso1';
 import Repaso from './Repaso';
