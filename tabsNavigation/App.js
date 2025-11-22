@@ -2,11 +2,40 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
+//Navigation Stack
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//---------------------------------------------------------------------------
+
 import Home from './screens/home';
 import Profile from './screens/profile';
 import Settings from './screens/settings';
+import Detalle from './screens/detalle';
 
 const Tab = createBottomTabNavigator();
+
+//-----------------------------------------Navigation Stack
+const Stack = createNativeStackNavigator();
+
+function ProfileStack(){
+  return(
+    <Stack.Navigator>
+      
+      <Stack.Screen
+        name='ProfileMain'
+        component={Profile}
+        options={{headerShown: false}}
+      ></Stack.Screen>
+
+      <Stack.Screen
+        name='Detalle'
+        component={Detalle}
+        options={{title: "Detalles del Usuario"}}
+      ></Stack.Screen>
+
+    </Stack.Navigator>
+  );
+}
+//---------------------------------------------------------------------------
 
 export default function App() {
   return (
@@ -36,7 +65,11 @@ export default function App() {
         })}
       >
         <Tab.Screen name='Home' component={Home}></Tab.Screen>
-        <Tab.Screen name='Profile' component={Profile}></Tab.Screen>
+
+        {/*Stack de Profile*/}
+        <Tab.Screen name='Profile' component={ProfileStack}></Tab.Screen>
+        {/*-------------------------------------------------------------------*/}
+
         <Tab.Screen name='Settings' component={Settings}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
