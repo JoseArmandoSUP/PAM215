@@ -4,11 +4,16 @@ import DatabaseService from "../database/DatabaseService";
 export class UsuarioController{
     constructor(){
         this.listeners = [];
+        this.initialized = false;
     }
 
     //Inicializar el controlador con el Service
     async initialize(){
+        if(this.initialized){
+            return;
+        }
         await DatabaseService.initialize();
+        this.initialized = true;
     }
 
     //Como segunda parte aquí preparamos el controlador par invoque al servicio de consulta cuando se le indiquen
@@ -41,6 +46,27 @@ export class UsuarioController{
             );
         }catch(error){
             console.error('Error al crear usuario:', error);
+            throw error;
+        }
+    }
+
+    async editarUsuario(id, nombreNuevo){
+        try{
+            Usuario.validar(nombreNuevo);
+            await DatabaseService.modificar(id, nombreNuevo.trim());
+            this.notifyListeners();
+        }catch(error){
+            console.error("Error al editar usuario: ", error);
+            throw error;
+        }
+    }
+
+    async eliminarUsuario(id){
+        try{
+            await DatabaseService.borrar(id);
+            this.notifyListeners();
+        }catch(error){
+            console.error("Error al aliminar usuario: ", error);
             throw error;
         }
     }

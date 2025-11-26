@@ -26,7 +26,7 @@ class DatabaseService{
     async getAll(){
         if(Platform.OS === 'web'){
             const data = localStorage.getItem(this.storageKey);
-            return date ? JSON.parse(data) : [];
+            return data ? JSON.parse(data) : [];
         }else{
             return await this.db.getAllAsync('SELECT * FROM usuarios ORDER BY id DESC');
         }
@@ -55,6 +55,33 @@ class DatabaseService{
                 nombre,
                 fecha_creacion: new Date().toISOString()
             };
+        }
+    }
+
+    async modificar(id, nombre){
+        if(Platform.OS === 'web'){
+            const usuarios = await this.getAll();
+            const index = usuarios.findIndex(u => u.id === id);
+            if(index !== -1){
+                usuarios[index].nombre = nombre;
+                localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+            }
+            return true;
+        }else{
+            await this.db.runAsync('UPDATE usuarios SET nombre = ? WHERE id = ?', [nombre, id]);
+            return true;
+        }
+    }
+
+    async borrar(id){
+        if(Platform.OS == 'web'){
+            let usuarios = await this.getAll();
+            usuarios = usuarios.filter(u => u.id !== id);
+            localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+            return true;
+        }else{
+            await this.db.runAsync('DELETE FROM usuarios WHERE id = ?', [id]);
+            return true;
         }
     }
 }

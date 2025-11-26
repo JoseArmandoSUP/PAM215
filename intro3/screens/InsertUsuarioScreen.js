@@ -10,6 +10,8 @@ export default function UsuarioView(){
     const[nombre, setNombre] = useState('');
     const[loading, setLoading] = useState(true);
     const[guardando, setGuardando] = useState(false);
+    const[editado, setEditado] = useState(false);
+    const[usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
 
     //SLECT - Cargar usuarios  desde la BD
     const cargarUsuarios = useCallback(async () => {
@@ -58,12 +60,42 @@ export default function UsuarioView(){
         }
     };
 
+    const handleEditar = async () => {
+        try{
+            if(!usuarioSeleccionado){
+                return;
+            }
+            await controller.editarUsuario(usuarioSeleccionado.id, nombre);
+            Alert.alert("Usuario actualizado", "Nombre de usuario modificado");
+            setNombre("");
+            setUsuarioSeleccionado(null);
+            setEditado(false);
+        }catch(error){
+            Alert.alert("Error", error.message);
+        }
+    };
+
     //Renderizar cada usuario
     const renderUsuario = ({item, index}) => (
         <View style={styles.userItem}>
             <View style={styles.userNumber}>
                 <Text style={styles.userNumberText}>{index + 1}</Text>
             </View>
+
+            <TouchableOpacity
+                style={styles.editarBtn}
+                onPress={()=>{setNombre(item.nombre); setUsuarioSeleccionado(item); setEditado(true);}}
+            >
+                <Text style={styles.editTexto}>Editar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.borrarBtn}
+                onPress={()=>controller.eliminarUsuario(item.id)}
+            >
+                <Text style={styles.borrarTexto}>Eliminar</Text>
+            </TouchableOpacity>
+
             <View style={styles.userInfo}>
                 <Text style={styles.userName}>{item.nombre}</Text>
                 <Text style={styles.userId}>ID: {item.id}</Text>
@@ -103,11 +135,11 @@ export default function UsuarioView(){
         
                 <TouchableOpacity 
                     style={[styles.button, guardando && styles.buttonDisabled]} 
-                    onPress={handleAgregar}
+                    onPress={editado ? handleEditar : handleAgregar}
                     disabled={guardando} 
                 >
                     <Text style={styles.buttonText}>
-                    {guardando ? ' Guardando...' : 'Agregar Usuario'}
+                    {editado ? ' Guardandar cambio' : (guardando ? 'Guardando...' : 'Agregar Usuario')}
                     </Text>
         
                 </TouchableOpacity>
@@ -335,5 +367,30 @@ const styles = StyleSheet.create({
     bold: {
         fontWeight: 'bold',
         color: '#1976D2',
+    },
+    
+    editarBtn:{
+        backgroundColor: "#0ca848ff",
+        padding: 8,
+        borderRadius: 6,
+        marginRight: 8,
+    },
+
+    editTexto:{
+        color: '#fff',
+        fontSize: 12,
+        fontWeight: 'bold',
+    },
+
+    borrarBtn:{
+        backgroundColor: "#FF3B30",
+        padding: 8,
+        borderRadius: 6,
+    },
+
+    borrarTexto:{
+        color: "#fff",
+        fontSize: 12,
+        fontWeight: 'bold',
     },
 });
